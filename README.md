@@ -15,4 +15,4 @@ Mini demo project built with Angular 21 and TailwindCSS.
 
 ---
 
-demo: https://books-popone.netlify.app/books/0 
+demo: https://books-popone.netlify.app
