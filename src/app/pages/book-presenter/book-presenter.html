@@ -1,0 +1,56 @@
+@let book = store.book();
+
+<div class="max-w-sm w-full mx-auto mt-12">
+  <div class="bg-pink-50 border-4 border-pink-200 rounded-3xl shadow-xl hover:scale-105 transition-transform duration-300 overflow-hidden">
+
+    <!-- COVER -->
+    <div 
+      class="h-56 bg-cover bg-center border-b-4 border-pink-200"
+      [style.backgroundImage]="'url(' + 'assets/' + book.coverImageUrl + ')'"
+      [title]="book.title">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="p-5 flex flex-col justify-between space-y-4">
+
+      <div>
+        <div class="text-pink-600 text-xs font-bold uppercase tracking-widest mb-1">
+          ✨ Book
+        </div>
+
+        <h1 class="text-gray-800 font-extrabold text-xl leading-snug">
+          {{ book.title }}
+        </h1>
+
+        <h2 class="text-pink-500 font-semibold mt-1">
+          {{ book.author }}
+        </h2>
+
+        <p class="text-gray-600 text-sm mt-3 leading-relaxed">
+          {{ book.description }}
+        </p>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="bg-white/70 rounded-xl px-3 py-2 text-xs text-gray-500 border border-pink-100">
+        🌸 ID: {{ book.id }}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TOOLBAR -->
+<div class="flex justify-center gap-4 mt-6">
+  <button 
+    (click)="prev()" 
+    class="bg-pink-400 hover:bg-pink-500 text-white font-bold px-5 py-2 rounded-full shadow-md transition-all hover:scale-105">
+    ⬅ Previous
+  </button>
+
+  <button 
+    (click)="next()" 
+    class="bg-purple-400 hover:bg-purple-500 text-white font-bold px-5 py-2 rounded-full shadow-md transition-all hover:scale-105">
+    Next ➡
+  </button>
+</div>
