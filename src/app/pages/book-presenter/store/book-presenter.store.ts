@@ -1,4 +1,4 @@
-import { patchState, signalStore, withComputed, withMethods, withState } from "@ngrx/signals";
+import { patchState, signalMethod, signalStore, withComputed, withMethods, withState } from "@ngrx/signals";
 import { initialBookPresenterSlice } from "./book-presenter.slice";
 import { computed } from "@angular/core";
 import { BOOKS_COLLECTION } from "../../../data/books-collection";
@@ -10,8 +10,12 @@ export const BookPresenterStore = signalStore(
         book: computed(() => BOOKS_COLLECTION[store.selectedBookId()]) // restituisce il libro selezionato in base all'id
     })),
     withMethods(store => ({
-        setBookId(id: number){
-            patchState(store, {selectedBookId: id}); // aggiorna lo stato dello store con il nuovo id del libro selezionato
-        }
+
+        // utilizzo signalMethod
+        setBookId: signalMethod<number>(id => 
+            patchState(store, {selectedBookId: id})
+        ) 
+        // metodo per aggiornare l'id del libro selezionato nello stato dello store
+        // non mi serve più usare effect()
     }))
 )

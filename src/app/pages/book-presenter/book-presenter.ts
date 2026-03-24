@@ -27,7 +27,11 @@ export class BookPresenter {
   }
 
   constructor() {
-    effect(() => this.store.setBookId(this.id())); // effetto che aggiorna lo store con l'id del libro selezionato ogni volta che l'id cambia
+    // non mi serve più usare effect()
+    this.store.setBookId(this.id); // imposta l'id del libro selezionato nello store in base all'input ricevuto
+    // come funziona? quando il componente viene creato, viene eseguito il costruttore, che chiama il metodo setBookId dello store passando l'id ricevuto come input.
+    // questo metodo aggiorna lo stato dello store con il nuovo id del libro selezionato, e grazie alla computed book, il componente si aggiorna automaticamente per mostrare i dettagli del nuovo libro selezionato.
+    // senza usare effect(), il metodo setBookId viene chiamato solo una volta al momento della creazione del componente, e non si aggiorna più quando l'id cambia. Invece, con signalMethod, il metodo setBookId viene chiamato ogni volta che l'id cambia, aggiornando lo stato dello store di conseguenza e mantenendo il componente sincronizzato con l'input ricevuto.
   }
   
 }

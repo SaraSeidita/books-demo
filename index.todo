@@ -1,0 +1,16 @@
+// Appunti lezione
+
+SignalMethod
+- è stato introdotto da signal 19
+- non dipende da rxjs 
+- è implementata come una funzione puramente legata al signal 
+- è una funzione factory che viene usata per creare metodi chiamato in due modi diversi:
+    1. usando un valore statico
+    2. utilizzando un signal -> in questo caso, ogni volta che il signal cambia, il metodo viene richiamato in automatico
+- è utile da utilizzare nei casi in cui si desidera che si verifichi qualcosa ogni volta che il signal cambia 
+- sembra come effect(), ma offre alcune caratteristiche aggiuntive che lo rendono un po' più facile da usare:
+    1. Ad esempio, il fatto che ogni signal utilizzato all'interno della logica dell'effect() fa sì che l'effetto si ripeta 
+    Con il SignalMethod, invece, solo il parametro fa sì che il metodo venga eseguito di nuovo 
+    Se si utilizzano altri signal all'interno, questi non causano nuova invocazione del metodo 
+    2. Inoltre, è possibile chiamare esplicitamente un signal method passando un valore statico (con effect() non si può fare)
+    3. Infine, è possibile generare un SignalMethod al di fuori del contesto dell'inject, passando quindi inject insieme al signal quando lo si invoca 
