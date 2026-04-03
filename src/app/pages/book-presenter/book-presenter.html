@@ -54,3 +54,18 @@
     Next ➡
   </button>
 </div>
+
+<!-- // aggiungo un editor toolbar per il rename  -->
+<div class="max-w-sm w-full mx-auto mt-6 flex gap-2 items-center">
+  <input 
+    type="text" 
+    placeholder="Edit book title..." 
+    #newName
+    class="flex-1 border-4 border-pink-200 rounded-3xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all"
+  />
+  <button 
+    (click)="store.renameCorrentBook(newName.value)"
+    class="bg-pink-400 hover:bg-pink-500 text-white font-bold px-4 py-2 rounded-3xl shadow-md transition-transform hover:scale-105">
+    Rename
+  </button>
+</div>
